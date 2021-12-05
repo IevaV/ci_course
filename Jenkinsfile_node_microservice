@@ -11,33 +11,41 @@ pipeline {
         }
         stage('deploy-dev') {
             steps {
-                echo "Deploying to DEV"
+               deploy("dev")
             }
         }
         stage('test-dev') {
             steps {
-                echo "Testing on DEV"
+                test("dev")
             }
         }
-        stage('deploy-iny') {
+        stage('deploy-int') {
             steps {
-                echo "Deploying to INT"
+               deploy("int")
             }
         }
         stage('test-int') {
             steps {
-                echo "Testing on INT"
+                test("int")
             }
         }
         stage('deploy-prd') {
             steps {
-                echo "Deploying to PRD"
+                deploy("prd")
             }
         }
         stage('test-prd') {
             steps {
-                echo "Testing on PRD"
+                test("prd")
             }
         }
     }
+}
+
+def deploy(String environment) {
+    echo "Deploying to ${environment} trigerred.. "
+}
+
+def test(String environment) {
+    echo "Running tests on ${environment}"
 }
