@@ -44,7 +44,7 @@ pipeline {
 
 def deploy(String environment) {
     echo "Deploying to ${environment} trigerred.. "
-    build job: "ui-tests", parameters: [string(name: "$ENVIRONMENT", value: "${environment}")]
+    build job: "ui-tests", parameters: [string(name: "ENVIRONMENT", value: "${environment}")]
 }
 
 def test(String environment) {
